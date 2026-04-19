@@ -1,12 +1,18 @@
 // lib/llm.ts
-import dotenv from 'dotenv';
-dotenv.config();
 
 export async function callLLM(prompt: string) {
-    console.log(`[Neo LLM] Using provider: ${process.env.LLM_PROVIDER || 'placeholder'}`);
+    const provider = process.env.LLM_PROVIDER || 'Not Set';
+    const model = process.env.LLM_MODEL || 'Not Set';
+
+    // This log will appear in your Vercel Dashboard > Logs
+    console.log(`[Neo LLM] Request received. Provider: ${provider}, Model: ${model}`);
+    console.log(`[Neo LLM] User Prompt: ${prompt}`);
+
+    // Simulate a slight delay to mimic AI thinking
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     return {
-        content: "This is a placeholder response from Neo.\n\nI am currently running as a pure backend service for Microsoft Teams.\n\nReal integration with SNOW, Splunk, Outlook, and Git will be added in the next steps.",
-        model: process.env.LLM_MODEL || 'placeholder'
+        content: `**Neo Status: Online**\n\nThis is a placeholder response from Neo.\n\nI am currently running as a production-ready backend on Vercel.\n\n**Next Steps:** Integration with SNOW, Splunk, Outlook, and Git.`,
+        model: model
     };
 }
