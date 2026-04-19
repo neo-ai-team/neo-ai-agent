@@ -4,7 +4,7 @@ import {
     ConfigurationServiceClientCredentialFactory,
     createBotFrameworkAuthenticationFromConfiguration
 } from 'botbuilder';
-import { NeoBot } from '../../bots/neo-bot';
+import { NeoBot } from '../../../bots/neo-bot';
 
 // 1. Setup Credentials Factory using your Vercel Environment Variables
 const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
