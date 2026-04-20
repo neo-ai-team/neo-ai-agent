@@ -12,7 +12,7 @@ This repository is one of **three interconnected workspaces** that together form
 
 | Workspace | Path | Role | Stack |
 |---|---|---|---|
-| **neo-ai-agent** *(this repo)* | `C:\AI\neo-ai-agent` | Backend AI service / API layer | Node.js, hosted on Vercel |
+| **neo-ai-agent** *(this repo)* | `C:\AI\neo-ai-agent` | Backend AI service / API layer | Node.js, hosted on Vercel *(feasibility)* or Azure *(TBD)* |
 | **NeoBOT** | `C:\AI\NeoBOT` | Microsoft Teams Bot frontend | Node.js, Bot Framework v4, Adaptive Cards |
 | **wow** | `C:\AI\wow` | Docs, planning, challenge briefings | Markdown / HTML |
 
@@ -23,7 +23,7 @@ This repository is one of **three interconnected workspaces** that together form
 ## This Repo — neo-ai-agent
 
 **Role:** Backend AI service that provides the intelligence layer for NeoBOT.  
-**Hosting:** Vercel (serverless functions)  
+**Hosting:** Not yet finalised — currently deployed to **Vercel** (serverless functions) for feasibility testing and connectivity validation. Azure is a candidate for production hosting.  
 **GitHub remote:** `neo-ai-agent` repository
 
 ### Responsibilities
@@ -33,7 +33,7 @@ This repository is one of **three interconnected workspaces** that together form
 - Return structured responses (task data, suggestions, decisions) to NeoBOT
 
 ### Key Design Principles
-- Serverless-first (Vercel functions)
+- Serverless-first — design functions to be portable across Vercel and Azure (avoid platform-locked APIs where possible)
 - Stateless API — no persistent session state on the server
 - Secure: never log credentials; validate all inputs at API boundaries
 - Keep each function small and focused (single responsibility)
