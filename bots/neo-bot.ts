@@ -1,6 +1,6 @@
 // bots/neo-bot.ts
 import { ActivityHandler, TurnContext, ActivityTypes } from 'botbuilder';
-import { callLLM } from '../lib/llm.js';
+import { callLLM } from '../lib/llm';
 
 export class NeoBot extends ActivityHandler {
     constructor() {
