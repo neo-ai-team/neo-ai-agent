@@ -8,6 +8,10 @@
     ],
     "routes": [
         {
+            "src": "/api/ping",
+            "dest": "/app/api/ping/route.js"
+        },
+        {
             "src": "/api/messages",
             "dest": "/app/api/messages/route.js"
         }

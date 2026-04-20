@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# salesforce dx (not part of this project)
+.sfdx/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
