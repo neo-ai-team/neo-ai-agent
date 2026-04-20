@@ -23,8 +23,26 @@ This repository is one of **three interconnected workspaces** that together form
 ## This Repo — neo-ai-agent
 
 **Role:** Backend AI service that provides the intelligence layer for NeoBOT.  
-**Hosting:** Not yet finalised — currently deployed to **Vercel** (serverless functions) for feasibility testing and connectivity validation. Azure is a candidate for production hosting.  
-**GitHub remote:** `neo-ai-agent` repository
+**Hosting:** Deployed to **Vercel** (production). URL: `https://neo-ai-agent-tan.vercel.app`  
+**GitHub remote:** `https://github.com/neo-ai-team/neo-ai-agent`
+
+### Branch Strategy & Deployment Flow
+
+| Branch | Purpose | Vercel behaviour |
+|---|---|---|
+| `develop` | Active development — push all changes here first | Preview deployment only (not production) |
+| `main` | Production — merge via PR from `develop` | **Triggers Vercel production deployment automatically** |
+
+**Deployment steps:**
+1. Commit and push changes to `develop`
+2. Open a Pull Request: `develop` → `main` on GitHub
+3. Merge the PR — Vercel auto-builds and deploys `main` to production
+4. Verify at `https://neo-ai-agent-tan.vercel.app/api/ping`
+
+**Known gotchas:**
+- Do NOT put a `builds` array in `vercel.json` — it overrides Next.js framework detection and breaks the build. Keep `vercel.json` minimal (just `{ "version": 2 }`); Next.js routes are auto-detected.
+- TypeScript imports inside `.ts` files must NOT use `.js` extensions (e.g. `'../lib/llm'` not `'../lib/llm.js'`). Turbopack (local dev) tolerates it; webpack (Vercel production build) does not.
+- `npm` via PowerShell may fail with a script signing error — use `npm.cmd` or `node_modules\.bin\next.cmd dev` instead.
 
 ### Responsibilities
 - Expose REST API endpoints consumed by NeoBOT
